@@ -1,5 +1,5 @@
-from generation import *
-from filtering import *
+from seqwalk.generation import *
+from seqwalk.filtering import *
 import math
 
 
@@ -20,6 +20,8 @@ def max_size(L, k, alphabet="ACT", RCfree=False, GClims=None,
         list of strings : seqs
             library of orthogonal sequences
     """
+
+    assert (L > k), "L must greater than k"
 
     if RCfree and len(alphabet) == 4:
         seq = adapted_hierholzer(k, alphabet)

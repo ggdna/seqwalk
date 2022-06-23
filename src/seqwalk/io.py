@@ -14,7 +14,6 @@ def load_library(identifier):
     """
 
     with resources.path("seqwalk.prebuilt_libs", identifier+".txt") as f:
-        print(f)
         seqs = [s.strip() for s in open(f, "r").readlines()]
     return seqs
 

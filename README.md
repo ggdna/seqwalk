@@ -57,14 +57,14 @@ We provide the following libraries, accessible with the identifier tag.
 
 If you have an orthogonal library you would like to add, please submit a PR!
 
-### Quality control using NUPACK or edit distances
+### Quality control using pairwise comparisons
 
-Once you have a library in the form of a list of sequences, you can use the `analysis` module to perform additional quality control. For example, we provide an interface to NUPACK v4 to estimate probability of binding of each pair of sequences in the library. 
+Once you have a library in the form of a list of sequences, you can use the `analysis` module to perform additional quality control. For example, we provide a function to compute pairwise Hamming distances.
 
 ```python
 from seqwalk import analysis
 
-crosstalk_matrix = analysis.nupack_matrix(seqs)
+h_crosstalk = analysis.hamming_matrix(seqs)
 ```
 
 ## Contributing
