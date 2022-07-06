@@ -28,6 +28,6 @@ def write_library(seqs, filename):
         None
     """
     f = open(filename, "w+")
-    f.writelines(seqs)
+    f.writelines([s + "\n" for s in seqs])
     f.close()
     print("File written!")

@@ -1,9 +1,8 @@
 # seqwalk
 
-
-## WARNING: this is package is in early development stages.
-
 `seqwalk` is a package for designing orthogonal DNA sequence libraries.  If you want to design DNA barcodes (for sequencing, multiplexed imaging, molecular programming, etc.) `seqwalk` is for you! It can efficiently generate libraries of maximal size or maximal predicted orthogonality based on sequence symmetry. `seqwalk` additionally includes off-the-shelf orthogonal sequence libraries, as well as tools for analyzing orthogonal sequence libraries.
+
+A code-free, interactive version of `seqwalk` can be found [here](https://colab.research.google.com/drive/1eVbcn_b5EE5FcL9NL5EyxeFAqNoImNSa?usp=sharing)
 
 For more details, see our preprint (coming soon!).
 
