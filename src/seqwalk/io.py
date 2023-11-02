@@ -1,3 +1,4 @@
+import csv
 from importlib import resources
 
 def load_library(identifier):
@@ -31,3 +32,20 @@ def write_library(seqs, filename):
     f.writelines([s + "\n" for s in seqs])
     f.close()
     print("File written!")
+
+def write_csv(seq, filename):
+    """
+    Writes a list of sequences to a .csv file. 
+    Copy the sequence column into an IDT order template
+
+    Args:
+        seqs: list of strings
+        filename: string corresponding to filename to save to
+    Returns:
+        None
+    """
+    with open (filename + '.csv', 'w') as f:
+        write = csv.writer(f, delimiter='\n')
+        write.writerow(["Sequence"])
+        write.writerow(seq)
+
