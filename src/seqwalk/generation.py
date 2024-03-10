@@ -162,6 +162,7 @@ def adapted_hierholzer(k, alphabet):
             v_stack.append(v)
             v_stack.append(n_edge[1:])
             marked[n_edge] = 1
+            marked[rc(n_edge)] = 1
 
     return path
 
