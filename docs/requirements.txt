@@ -2,3 +2,4 @@ myst-nb
 sphinx-autoapi
 sphinx-rtd-theme
 seaborn
+matplotlib
