@@ -3,4 +3,4 @@ sphinx-autoapi
 sphinx-rtd-theme
 seaborn
 matplotlib
-seqwalk
+seqwalk==0.2.0

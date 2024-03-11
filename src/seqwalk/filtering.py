@@ -18,7 +18,7 @@ def filter_rc_3letter(library, k):
     middle = int((k+1)/2)
 
     for seq in library:
-        for i in range(len(seq)-k):
+        for i in range(len(seq)-k+1):
             if sum([(s == "C" or s == "G") for s in seq[i:i+k]]) == 0 :
                 if seq[i+middle-1] == "A":
                     to_remove.append(seq)
