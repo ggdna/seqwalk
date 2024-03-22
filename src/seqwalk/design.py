@@ -86,4 +86,4 @@ def max_orthogonality(N, L, alphabet="ACT", RCfree=False, GClims=None,
             print("SSM k value: %d" % k_init)
             return library
 
-        k_init += (1 + RCfree)
+        k_init += 1

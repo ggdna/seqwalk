@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.3.1 (22/03/2024)
+
+- Fixed odd-k incrementing in max_orthogonality
+
 ## v0.3.0 (22/03/2024)
 
 - Added hash-based filtering
