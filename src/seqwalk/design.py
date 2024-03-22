@@ -1,6 +1,7 @@
 from seqwalk.generation import *
 from seqwalk.filtering import *
 import math
+from warnings import warn
 
 
 def max_size(L, k, alphabet="ACT", RCfree=False, GClims=None,
@@ -21,9 +22,10 @@ def max_size(L, k, alphabet="ACT", RCfree=False, GClims=None,
             library of orthogonal sequences
     """
 
-    assert (L > k), "L must greater than k"
+    assert (L > k), "L must be greater than k"
 
-    if RCfree and len(alphabet) == 4:
+    if RCfree and len(alphabet) == 4 and k % 2 == 1:
+        warn("Falling back to Hierholzer algorithm for odd-k, ACGT, RC free")
         seq = adapted_hierholzer(k, alphabet)
         seqs = partition_path(seq, L, k)
         if len(seqs) == 0:
@@ -39,7 +41,7 @@ def max_size(L, k, alphabet="ACT", RCfree=False, GClims=None,
          seq = "".join([alphabet[i-1] for i in simple_shift(k, len(alphabet))])
          seqs = partition_path(seq[:-1], L, k)
          if RCfree:
-             seqs = filter_rc_3letter(seqs, k)
+             seqs = rc_hash_filtering(seqs, k)
          if len(seqs) == 0:
              return seqs
          if GClims != None:
@@ -72,10 +74,10 @@ def max_orthogonality(N, L, alphabet="ACT", RCfree=False, GClims=None,
     """
     if k_init == None:
         k_init = max(int(math.log(N)/math.log(len(alphabet))), 2)
-        if (k_init % 2 == 0) and RCfree:
-            k_init += 1
-
+    
     while True:
+
+        print("Attempting SSM k=%d" %k_init)
 
         library = max_size(L, k_init, alphabet, RCfree, GClims, prevented_patterns)
 

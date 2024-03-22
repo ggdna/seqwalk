@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.3.0 (22/03/2024)
+
+- Added hash-based filtering
+
 ## v0.2.1 (11/03/2024)
 
 - Fixed 3 letter filtering indexing
