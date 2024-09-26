@@ -54,7 +54,7 @@ def max_size(L, k, alphabet="ACT", RCfree=False, GClims=None,
 
 def max_orthogonality(N, L, alphabet="ACT", RCfree=False, GClims=None,
                       prevented_patterns=["AAAA", "CCCC", "GGGG","TTTT"],
-                      k_init=None):
+                      k_init=None, verbose=True):
     """
     design a maximally orthogonal library of N length L sequences
 
@@ -66,6 +66,7 @@ def max_orthogonality(N, L, alphabet="ACT", RCfree=False, GClims=None,
         GClims: tuple of (GCmin, GCmax), allowable range of number of GC bases
         prevented_patterns: list of prevented patterns (default 4N)
         k_init: initial guess for SSM k value
+        verbose: bool, True if print statements are desired
     
     Returns:
         list of strings : seqs
@@ -76,14 +77,15 @@ def max_orthogonality(N, L, alphabet="ACT", RCfree=False, GClims=None,
         k_init = max(int(math.log(N)/math.log(len(alphabet))), 2)
     
     while True:
-
-        print("Attempting SSM k=%d" %k_init)
+        if verbose:
+            print("Attempting SSM k=%d" %k_init)
 
         library = max_size(L, k_init, alphabet, RCfree, GClims, prevented_patterns)
 
         if len(library)>N:
-            print("Number of sequences: %d" % len(library))
-            print("SSM k value: %d" % k_init)
+            if verbose:
+                print("Number of sequences: %d" % len(library))
+                print("SSM k value: %d" % k_init)
             return library
 
         k_init += 1
