@@ -5,7 +5,8 @@ from warnings import warn
 
 
 def max_size(L, k, alphabet="ACT", RCfree=False, GClims=None,
-             prevented_patterns=["AAAA", "CCCC", "GGGG", "TTTT"]):
+             prevented_patterns=["AAAA", "CCCC", "GGGG", "TTTT"],
+             verbose=True):
     """
     design a max size library of length L sequences with SSM k
 
@@ -16,6 +17,7 @@ def max_size(L, k, alphabet="ACT", RCfree=False, GClims=None,
         RCfree: bool, True if orthogonality with RCs is required
         GClims: tuple of (GCmin, GCmax), allowable range of number of GC bases
         prevented_patterns: list of prevented patterns (default 4N)
+        verbose: bool, True if print and warning statements are desired
 
     Returns:
         list of strings : seqs
@@ -25,7 +27,8 @@ def max_size(L, k, alphabet="ACT", RCfree=False, GClims=None,
     assert (L > k), "L must be greater than k"
 
     if RCfree and len(alphabet) == 4 and k % 2 == 1:
-        warn("Falling back to Hierholzer algorithm for odd-k, ACGT, RC free")
+        if verbose:
+            warn("Falling back to Hierholzer algorithm for odd-k, ACGT, RC free")
         seq = adapted_hierholzer(k, alphabet)
         seqs = partition_path(seq, L, k)
         if len(seqs) == 0:
@@ -66,7 +69,7 @@ def max_orthogonality(N, L, alphabet="ACT", RCfree=False, GClims=None,
         GClims: tuple of (GCmin, GCmax), allowable range of number of GC bases
         prevented_patterns: list of prevented patterns (default 4N)
         k_init: initial guess for SSM k value
-        verbose: bool, True if print statements are desired
+        verbose: bool, True if print and warning statements are desired
     
     Returns:
         list of strings : seqs
@@ -80,7 +83,7 @@ def max_orthogonality(N, L, alphabet="ACT", RCfree=False, GClims=None,
         if verbose:
             print("Attempting SSM k=%d" %k_init)
 
-        library = max_size(L, k_init, alphabet, RCfree, GClims, prevented_patterns)
+        library = max_size(L, k_init, alphabet, RCfree, GClims, prevented_patterns, verbose)
 
         if len(library)>N:
             if verbose:
