@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "seqwalk"
-version = "0.3.2"
+version = "0.3.3"
 description = "Design orthogonal DNA sequences"
 authors = ["Gokul Gowri"]
 license = "MIT"

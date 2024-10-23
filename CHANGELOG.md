@@ -1,5 +1,8 @@
 # Changelog
 
+## v0.3.3 (23/10/2024)
+- Verbosity arguments
+
 ## v0.3.1 (22/03/2024)
 
 - Fixed odd-k incrementing in max_orthogonality
